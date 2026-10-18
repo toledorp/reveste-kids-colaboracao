@@ -1,0 +1,339 @@
+:root {
+  --register-bg: #1f1f22;
+  --register-surface: #1f1f22;
+  --register-text: #ffffff;
+  --register-text-secondary: #c7c7cc;
+  --register-text-muted: #8d9199;
+  --register-border: #4a4d53;
+  --register-input-bg: #1f1f22;
+  --register-primary: #8b5cf6;
+  --register-primary-hover: #7c3aed;
+  --register-hover: rgba(255, 255, 255, 0.03);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--register-bg);
+  color: var(--register-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.register-page {
+  min-height: 100vh;
+  background: var(--register-bg);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.register-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.register-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.register-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--register-text-muted);
+  text-decoration: none;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+  margin-left: -10px;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.register-back:hover {
+  opacity: 0.7;
+}
+
+.register-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 2px;
+}
+
+.register-brand-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+.register-brand span {
+  color: var(--register-text);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+
+.register-title {
+  color: var(--register-text);
+  font-size: 2rem;
+  line-height: 1.05;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.register-subtitle {
+  color: var(--register-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin-bottom: 28px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-field label {
+  color: var(--register-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.register-field input,
+.register-field select,
+.register-address-grid input,
+.register-address-grid select {
+  width: 100%;
+  height: 56px;
+  background: var(--register-input-bg);
+  border: 1px solid var(--register-border);
+  border-radius: 14px;
+  padding: 0 18px;
+  color: var(--register-text);
+  font-size: 17px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.register-field input::placeholder,
+.register-address-grid input::placeholder {
+  color: var(--register-text-muted);
+}
+
+.register-field input:focus,
+.register-field select:focus,
+.register-address-grid input:focus,
+.register-address-grid select:focus {
+  border-color: var(--register-primary);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+.register-field select,
+.register-address-grid select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--register-input-bg);
+  color: var(--register-text-muted);
+  padding-right: 52px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 18px;
+}
+
+.register-field select:valid,
+.register-address-grid select:valid {
+  color: var(--register-text-muted);
+}
+
+.register-field option,
+.register-address-grid option {
+  background: #1f1f22;
+  color: #ffffff;
+}
+
+.register-date {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+.register-address-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.register-info,
+.register-terms {
+  color: var(--register-text-secondary);
+  font-size: 0.96rem;
+  line-height: 1.5;
+  margin: -8px 0 0;
+}
+
+.register-policy,
+.register-policy p,
+.register-policy span,
+.register-policy strong {
+  color: var(--register-text) !important;
+}
+
+.register-policy {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-top: -4px;
+}
+
+.register-policy strong {
+  font-weight: 600;
+}
+
+.register-button {
+  height: 54px;
+  border: none;
+  border-radius: 999px;
+  background: var(--register-primary);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.register-button:hover {
+  background: var(--register-primary-hover);
+}
+
+.register-login-button {
+  width: 100%;
+  height: 54px;
+  border: 1px solid var(--register-border);
+  border-radius: 999px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--register-text);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 12px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.register-login-button:hover {
+  background: var(--register-hover);
+}
+
+.register-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 20px 22px;
+  box-sizing: border-box;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.register-footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.register-footer-links button {
+  background: transparent;
+  border: none;
+  color: var(--register-text-muted);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.register-footer-links button:hover {
+  color: var(--register-text);
+}
+
+.register-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--register-text-muted);
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .register-main {
+    padding: 32px 18px;
+  }
+
+  .register-title {
+    font-size: 1.8rem;
+  }
+
+  .register-date {
+    grid-template-columns: 1fr;
+  }
+
+  .register-address-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .register-brand span {
+    font-size: 16px;
+  }
+
+  .register-policy {
+    font-size: 0.84rem;
+  }
+
+  .register-footer-links {
+    gap: 12px;
+  }
+
+  .register-footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}

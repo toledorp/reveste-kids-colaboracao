@@ -1,0 +1,667 @@
+.closet-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* SIDEBAR */
+
+.closet-sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 28px 22px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.closet-logo {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 72px;
+}
+
+.closet-actions-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BOTÃO HOME */
+
+.closet-home-btn {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.2s ease;
+}
+
+.closet-home-btn:hover {
+  transform: scale(1.08);
+  border-color: #c084fc;
+}
+
+.closet-home-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  transition: 0.2s ease;
+  filter: drop-shadow(0 0 4px rgba(192, 132, 252, 0.45));
+}
+
+.closet-home-btn:hover .closet-home-icon {
+  transform: scale(1.1);
+}
+
+.closet-home-label {
+  color: var(--text-main);
+}
+
+/* CARD USUÁRIO */
+
+.closet-user-card {
+  width: 100%;
+  margin-top: auto;
+  padding: 14px;
+  border-radius: 14px;
+  background: #111111;
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.closet-user-card span {
+  color: #aaaaaa;
+  font-size: 0.8rem;
+}
+
+.closet-user-card strong {
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+/* PAGE */
+
+.closet-container {
+  min-height: 100vh;
+  padding: 44px 48px;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(192, 132, 252, 0.08),
+      transparent 32%
+    ),
+    var(--bg-page);
+}
+
+.closet-header {
+  max-width: 1180px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.closet-header h1 {
+  margin: 0 0 10px;
+  color: #c084fc;
+  font-size: 2.6rem;
+}
+
+.closet-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.closet-add-btn {
+  border: none;
+  background: #c084fc;
+  color: #111111;
+  padding: 13px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.closet-add-btn:hover {
+  transform: translateY(-2px);
+  background: #a855f7;
+}
+
+/* GRID */
+
+.closet-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+.closet-card {
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+    180deg,
+    var(--bg-card-soft) 0%,
+    var(--bg-card) 100%
+  );
+
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+  transition: 0.2s ease;
+}
+
+.closet-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 132, 252, 0.42);
+}
+
+.closet-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.closet-info {
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.closet-info h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  color: var(--text-main);
+}
+
+.closet-info p {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.closet-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.closet-meta span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(192, 132, 252, 0.18);
+  border: 1px solid rgba(192, 132, 252, 0.26);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ACTIONS */
+
+.closet-actions {
+  margin-top: auto;
+  padding-top: 18px;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.closet-edit-btn,
+.closet-delete-btn {
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closet-edit-btn img,
+.closet-delete-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.closet-edit-btn,
+.closet-delete-btn {
+  background: #ffffff;
+}
+
+.closet-edit-btn:hover,
+.closet-delete-btn:hover {
+  background: #ffffff;
+  transform: scale(1.08);
+}
+
+.closet-delete-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* EMPTY / LOADING */
+
+.closet-empty,
+.closet-loading {
+  min-height: 60vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+}
+
+.closet-empty h2 {
+  margin: 0 0 10px;
+  color: #c084fc;
+  font-size: 2rem;
+}
+
+.closet-empty p {
+  margin: 0 0 18px;
+}
+
+.closet-empty button {
+  justify-self: center;
+  border: none;
+  background: #c084fc;
+  color: #111111;
+  padding: 13px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* MODAL */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(
+    180deg,
+    var(--bg-card-soft) 0%,
+    var(--bg-card) 100%
+  );
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  padding: 22px;
+  color: var(--text-main);
+}
+
+.modal-content-large {
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #c084fc;
+  font-size: 1.6rem;
+}
+
+.modal-close-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(192, 132, 252, 0.16);
+  background: var(--bg-card);
+  color: var(--text-main);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border-color: #c084fc;
+  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.12);
+}
+
+.modal-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.modal-media-section {
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid rgba(192, 132, 252, 0.16);
+}
+
+.modal-media-header h3 {
+  margin: 0 0 6px;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.modal-media-header p {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.modal-upload-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modal-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.modal-upload-btn input {
+  display: none;
+}
+
+.modal-upload-icon {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.modal-upload-btn:hover {
+  transform: scale(1.05);
+}
+
+.modal-upload-helper {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.modal-upload-status {
+  margin: 12px 0 0;
+  color: #c084fc;
+  font-size: 0.9rem;
+}
+
+.modal-preview-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.modal-preview-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid rgba(192, 132, 252, 0.16);
+  aspect-ratio: 1 / 1;
+}
+
+.modal-preview-item img,
+.modal-preview-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-remove-media-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-media-type-label {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+  font-size: 0.72rem;
+}
+
+.modal-empty-media {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-cancel-btn,
+.modal-save-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.modal-cancel-btn,
+.modal-save-btn {
+  background: #ffffff;
+}
+
+.modal-cancel-btn:hover,
+.modal-save-btn:hover {
+  background: #ffffff;
+  transform: scale(1.08);
+}
+
+.modal-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.modal-action-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.modal-saving-text {
+  color: #111111;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* BOTÃO HOME - contraste invertido por tema */
+
+body.light .closet-home-btn,
+.light .closet-home-btn,
+[data-theme="light"] .closet-home-btn {
+  background: #111111;
+  border: 1px solid rgba(192, 132, 252, 0.55);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+body.dark .closet-home-btn,
+.dark .closet-home-btn,
+[data-theme="dark"] .closet-home-btn {
+  background: #ffffff;
+  border: 1px solid rgba(192, 132, 252, 0.45);
+  box-shadow: 0 8px 22px rgba(255, 255, 255, 0.08);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .closet-layout {
+    display: block;
+  }
+
+  .closet-sidebar {
+    position: static;
+    height: auto;
+    padding: 20px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-soft);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .closet-logo {
+    width: 50px;
+    margin-bottom: 0;
+  }
+
+  .closet-actions-menu {
+    margin: 0;
+  }
+
+  .closet-home-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .closet-home-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .closet-home-label {
+    display: none;
+  }
+
+  .closet-user-card {
+    display: none;
+  }
+
+  .closet-container {
+    padding: 28px 16px;
+  }
+
+  .closet-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .closet-header h1 {
+    font-size: 2rem;
+  }
+
+  .closet-add-btn {
+    width: 100%;
+  }
+
+  .closet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .closet-actions {
+    justify-content: stretch;
+  }
+
+  .closet-edit-btn,
+  .closet-delete-btn {
+    flex: 1;
+  }
+
+  .modal-form-row {
+    grid-template-columns: 1fr;
+  }
+}

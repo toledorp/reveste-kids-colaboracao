@@ -1,0 +1,501 @@
+.search-closets-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 100vh;
+  background: var(--bg-main, #050505);
+  color: var(--text-main, #ffffff);
+}
+
+.search-closets-sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 28px 22px;
+  background: var(--bg-sidebar, #050505);
+  border-right: 1px solid var(--border-soft, rgba(255, 255, 255, 0.08));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-closets-logo {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 72px;
+}
+
+.search-closets-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-closets-menu button {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-closets-menu button:hover {
+  transform: scale(1.08);
+  border-color: #c084fc;
+}
+
+.search-closets-menu img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.search-closets-page {
+  min-height: 100vh;
+  padding: 44px 48px;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(192, 132, 252, 0.08),
+      transparent 32%
+    ),
+    var(--bg-page, #050505);
+}
+
+/* BOTÃO HOME MOBILE */
+
+.search-closets-mobile-home {
+  display: none;
+}
+
+.search-closets-header {
+  max-width: 1280px;
+  margin: 0 auto 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.search-closets-header h1 {
+  margin: 0 0 10px;
+  color: var(--purple-main, #c084fc);
+  font-size: 2.6rem;
+}
+
+.search-closets-header p {
+  margin: 0;
+  color: var(--text-muted, #d4d4d4);
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+.search-closets-back-btn {
+  border: none;
+  background: var(--purple-main, #c084fc);
+  color: #111111;
+  padding: 13px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-closets-back-btn:hover {
+  transform: translateY(-2px);
+  background: #a855f7;
+}
+
+.search-closets-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+}
+
+.search-closets-list-panel,
+.search-closets-items-panel {
+  background: linear-gradient(
+    180deg,
+    var(--bg-card-soft, #181818) 0%,
+    var(--bg-card, #101010) 100%
+  );
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+}
+
+.search-closets-list-panel {
+  padding: 16px;
+  min-height: 70vh;
+}
+
+.search-closets-items-panel {
+  padding: 22px;
+  min-height: 70vh;
+}
+
+.search-closets-input-box {
+  margin-bottom: 16px;
+}
+
+.search-closets-input-box input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  background: var(--bg-card, #0f0f0f);
+  color: var(--text-main, #ffffff);
+  outline: none;
+}
+
+.search-closets-input-box input:focus {
+  border-color: #c084fc;
+  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.12);
+}
+
+.search-closets-input-box button {
+  width: 100%;
+  margin-top: 8px;
+  border: none;
+  background: rgba(192, 132, 252, 0.16);
+  color: var(--text-main, #ffffff);
+  padding: 9px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-closets-users {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-closets-user-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(192, 132, 252, 0.16);
+  background: #ffffff;
+  color: #111111;
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.search-closets-user-card strong {
+  color: #111111;
+  font-size: 1rem;
+}
+
+.search-closets-user-card span {
+  color: #333333;
+  font-size: 0.88rem;
+  word-break: break-word;
+}
+
+.search-closets-user-card small {
+  color: #6d28d9;
+  font-weight: 800;
+}
+
+.search-closets-user-card.active,
+.search-closets-user-card:hover {
+  background: #181818;
+  color: #ffffff;
+  border-color: rgba(192, 132, 252, 0.65);
+}
+
+.search-closets-user-card.active strong,
+.search-closets-user-card.active span,
+.search-closets-user-card:hover strong,
+.search-closets-user-card:hover span {
+  color: #ffffff;
+}
+
+.search-closets-user-card.active small,
+.search-closets-user-card:hover small {
+  color: #c084fc;
+}
+
+.search-closets-selected-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.16);
+}
+
+.search-closets-selected-header span {
+  color: var(--text-muted, #aaaaaa);
+  font-size: 0.9rem;
+}
+
+.search-closets-selected-header h2 {
+  margin: 4px 0 0;
+  color: var(--purple-main, #c084fc);
+  font-size: 2rem;
+}
+
+.search-closets-selected-header p {
+  margin: 0;
+  color: var(--text-muted, #d4d4d4);
+}
+
+.search-closets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.search-closets-card {
+  background: linear-gradient(
+    180deg,
+    var(--bg-card-soft, #181818) 0%,
+    var(--bg-card, #101010) 100%
+  );
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.search-closets-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 132, 252, 0.42);
+}
+
+.search-closets-media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #111111;
+  overflow: hidden;
+}
+
+.search-closets-info {
+  padding: 16px;
+}
+
+.search-closets-info h3 {
+  margin: 0 0 8px;
+  color: var(--text-main, #ffffff);
+  font-size: 1.2rem;
+}
+
+.search-closets-info p {
+  margin: 0 0 14px;
+  color: var(--text-muted, #d4d4d4);
+  line-height: 1.4;
+  font-size: 0.92rem;
+}
+
+.search-closets-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search-closets-tags span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(192, 132, 252, 0.18);
+  border: 1px solid rgba(192, 132, 252, 0.26);
+  color: var(--text-main, #ffffff);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.search-closets-like-btn {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #111111;
+  padding: 11px 12px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s ease;
+}
+
+.search-closets-like-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(192, 132, 252, 0.22);
+}
+
+.search-closets-like-btn.liked {
+  background: #c084fc;
+  color: #111111;
+}
+
+.search-closets-like-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.search-closets-like-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.search-closets-empty,
+.search-closets-status {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--text-muted, #d4d4d4);
+}
+
+.search-closets-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 3000;
+  max-width: 360px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #181818;
+  color: #ffffff;
+  border: 1px solid rgba(192, 132, 252, 0.5);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 960px) {
+  .search-closets-layout {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .search-closets-sidebar {
+    position: static;
+    height: auto;
+    padding: 20px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-soft, rgba(255, 255, 255, 0.08));
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-closets-logo {
+    width: 50px;
+    margin-bottom: 0;
+  }
+
+  .search-closets-menu {
+    margin: 0;
+  }
+
+  .search-closets-menu button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .search-closets-menu img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .search-closets-mobile-home {
+    display: none;
+  }
+
+  .search-closets-page {
+    width: 100%;
+    padding: 28px 16px 90px;
+    overflow-x: hidden;
+  }
+
+  .search-closets-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .search-closets-header h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .search-closets-content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .search-closets-list-panel,
+  .search-closets-items-panel {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .search-closets-list-panel {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .search-closets-items-panel {
+    padding: 16px;
+  }
+
+  .search-closets-selected-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .search-closets-selected-header h2 {
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+
+  .search-closets-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .search-closets-user-card {
+    padding: 12px;
+  }
+
+  .search-closets-user-card strong {
+    font-size: 0.95rem;
+  }
+
+  .search-closets-user-card span {
+    font-size: 0.8rem;
+  }
+
+  .search-closets-input-box input {
+    font-size: 14px;
+  }
+
+  .search-closets-like-btn {
+    font-size: 0.92rem;
+    padding: 10px;
+  }
+}

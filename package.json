@@ -1,0 +1,16 @@
+{
+  "name": "reveste-kids-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n BACK,FRONT -c green,blue \"npm run dev:back\" \"npm run dev:front\"",
+    "dev:back": "npm --prefix backend run dev",
+    "dev:front": "npm --prefix frontend run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.3"
+  }
+}

@@ -1,0 +1,42 @@
+import mongoose from "mongoose";
+
+const notificationSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Users",
+      required: true,
+    },
+    senderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Users",
+      required: true,
+    },
+    clothingId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Clothing",
+      default: null,
+    },
+    matchId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Match",
+      default: null,
+    },
+    type: {
+      type: String,
+      enum: ["LIKE", "MATCH", "MESSAGE"],
+      required: true,
+    },
+    message: {
+      type: String,
+      required: true,
+    },
+    read: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model("Notification", notificationSchema);

@@ -1,0 +1,36 @@
+.footer {
+  background: #080808;
+  border-top: 1px solid rgba(168, 85, 247, 0.24);
+  padding: 21px 20px 28px;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  color: #c084fc;
+  font-size: 2rem;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.footer-text {
+  color: #d4d4d4;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.footer-copy {
+  color: #7a7a7a;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 34px 16px 24px;
+  }
+}

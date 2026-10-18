@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+
+.features-page {
+  min-height: calc(100vh - 180px);
+  background:
+    radial-gradient(circle at top, rgba(255, 232, 31, 0.08), transparent 30%),
+    linear-gradient(180deg, #020617 0%, #000000 100%);
+  color: #f5f5f5;
+}
+
+.features-content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px 60px;
+}
+
+.features-badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 232, 31, 0.35);
+  border-radius: 999px;
+  color: #ffe81f;
+  background: rgba(255, 232, 31, 0.07);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.features-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #d6d6d6;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  position: relative;
+  padding: 28px 22px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+  border: 1px solid rgba(255, 232, 31, 0.15);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255, 232, 31, 0.12), transparent 35%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 232, 31, 0.4);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 232, 31, 0.08);
+  border: 1px solid rgba(255, 232, 31, 0.18);
+  font-size: 1.7rem;
+}
+
+.feature-card h2 {
+  margin: 0 0 12px;
+  color: #ffe81f;
+  font-size: 1.35rem;
+}
+
+.feature-card p {
+  margin: 0 0 18px;
+  color: #d8d8d8;
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+.feature-link {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  opacity: 0.88;
+}
+
+@media (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .features-content {
+    padding: 36px 18px 50px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 24px 18px;
+  }
+}

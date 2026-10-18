@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #19161e;
+  --bg-page: #19161e;
+  --bg-sidebar: #292031;
+  --bg-card: #111111;
+  --bg-card-soft: #292031;
+  --text-main: #f3e8ff;
+  --text-muted: #bcb0c7;
+  --text-soft: #e3c8fc;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --purple-main: #c084fc;
+  --purple-dark: #8b5cf6;
+  --cyan-secondary: #83FCF0;
+}
+
+[data-theme="light"] {
+  --bg-main: #e5d5f8;
+  --bg-page: #e5d5f8;
+  --bg-sidebar: #cba7ef;
+  --bg-card: #ffffff;
+  --bg-card-soft: #fff;
+  --text-main: #1d1922;
+  --text-muted: rgb(63, 66, 66);
+  --text-soft: #6b7280;
+  --border-soft: rgba(31, 31, 31, 0.12);
+  --purple-main: #8b5cf6;
+  --purple-dark: #6d28d9;
+  --cyan-secondary: #83FCF0;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================= */
+/* TOOLTIP PADRÃO DOS ÍCONES */
+/* ============================= */
+
+.tiktok-actions span,
+.closet-home-label,
+.matches-home-label,
+.add-home-label {
+  background: #111111;
+  color: #ffffff !important;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+  z-index: 30;
+}
+
+/* Feed: tooltip abaixo de cada botão */
+.tiktok-actions span {
+  position: static;
+  display: block;
+  margin-top: -6px;
+  transform: translateY(-4px);
+  text-align: center;
+}
+
+/* Closet / Matches / Add: tooltip lateral */
+/* TOOLTIP LATERAL (Closet, Matches, Add) */
+
+.closet-home-label,
+.matches-home-label,
+.add-home-label {
+  position: absolute;
+  left: 72px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  
+  padding: 5px 8px 0px; /* 🔥 menor */
+  font-size: 0.72rem; /* 🔥 menor */
+  
+  background: #111111;
+  color: #ffffff;
+  
+  border-radius: 8px; /* 🔥 mais suave */
+  border: 1px solid rgba(192, 132, 252, 0.25);
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.18s ease;
+  
+  white-space: nowrap;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.22);
+}
+
+/* Hover correto */
+.closet-home-btn:hover .closet-home-label,
+.matches-home-btn:hover .matches-home-label,
+.add-home-btn:hover .add-home-label {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Exibir tooltip no hover */
+.tiktok-actions button:hover + span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.closet-home-btn:hover .closet-home-label,
+.matches-home-btn:hover .matches-home-label,
+.add-home-btn:hover .add-home-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Mobile: esconder tooltips */
+@media (max-width: 900px) {
+  .tiktok-actions span,
+  .closet-home-label,
+  .matches-home-label,
+  .add-home-label {
+    display: none;
+  }
+}
+
+/* ============================= */
+/* CORREÇÃO FINAL TOOLTIP PÁGINAS INTERNAS */
+/* Closet / Matches / Add */
+/* ============================= */
+
+.closet-home-label,
+.matches-home-label,
+.add-home-label {
+  position: absolute !important;
+  left: 74px !important;
+  top: 50% !important;
+  bottom: auto !important;
+
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+
+  padding: 4px 8px !important;
+  border-radius: 8px !important;
+
+  background: #111111 !important;
+  color: #ffffff !important;
+
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+
+  transform: translateY(-50%) translateX(-6px) !important;
+  transition: 0.18s ease !important;
+
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  z-index: 50;
+}
+
+.closet-home-btn:hover .closet-home-label,
+.matches-home-btn:hover .matches-home-label,
+.add-home-btn:hover .add-home-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0) !important;
+}
