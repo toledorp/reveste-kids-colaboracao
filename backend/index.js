@@ -1,5 +1,7 @@
+
+import "dotenv/config";
+
 import express from "express";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
@@ -14,13 +16,12 @@ import interestRoutes from "./routes/interestRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 
-dotenv.config();
-
 const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
+
 app.use(
   cors({
     origin: [
@@ -52,5 +53,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log("Erro ao conectar:", error);
+    console.error("Erro ao conectar ao MongoDB:", error);
   });

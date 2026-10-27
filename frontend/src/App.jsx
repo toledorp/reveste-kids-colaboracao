@@ -9,8 +9,10 @@ import {
 
 import { useEffect, useState } from "react";
 
-import Footer from "./components/Footer";
+// Importando o Provider do Google Auth
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
+import Footer from "./components/Footer";
 
 import FeedTikTok from "./pages/FeedTikTok";
 import MyCloset from "./pages/MyCloset";
@@ -98,17 +100,21 @@ function AppContent() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
-
       {!hideGlobalLayout && <Footer />}
     </>
   );
 }
 
 function App() {
+  // Pegando o Client ID que você configurou no seu arquivo .env do frontend
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
   return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 

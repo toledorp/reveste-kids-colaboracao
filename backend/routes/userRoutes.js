@@ -11,4 +11,7 @@ userRoutes.post("/user", userController.createUser)
 //Endpoint para logar um usuario
 userRoutes.post("/auth", userController.loginUser )
 
+//Endpoint para logar/cadastrar com o Google
+userRoutes.post("/auth/google", userController.googleLogin)
+
 export default userRoutes;
