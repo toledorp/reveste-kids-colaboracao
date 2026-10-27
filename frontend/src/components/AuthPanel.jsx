@@ -57,7 +57,7 @@ function AuthPanel({ onAuthSuccess }) {
   const googleLogin = useGoogleLogin({
     flow: "implicit",
     onSuccess: (tokenResponse) => {
-      handleGoogleAccessToken(tokenResponse.access_token);
+      void handleGoogleAccessToken(tokenResponse.access_token);
     },
     onError: () => {
       setError("Ocorreu um erro na autenticação com o Google.");
