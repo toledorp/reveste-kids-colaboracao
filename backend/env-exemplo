@@ -1,9 +1,14 @@
-JWTSECRET=therevestkids-secret
-MONGODB_URI=mongodb://rogepupotoledo_db_user:StarWars2026@ac-cqf1ntx-shard-00-00.yxn8mln.mongodb.net:27017,ac-cqf1ntx-shard-00-01.yxn8mln.mongodb.net:27017,ac-cqf1ntx-shard-00-02.yxn8mln.mongodb.net:27017/reveste_kids?ssl=true&replicaSet=atlas-zlvf1f-shard-0&authSource=admin&retryWrites=true&w=majority
+PORT=4000
 
+MONGODB_URI=seu_link_do_mongodb_atlas_aqui
+JWTSECRET=seu_jwt_secret_aqui
 
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_USER=ralkytech@gmail.com
-EMAIL_PASS=dvvajourhbazvaox
-EMAIL_FROM=Reveste Kids <ralkytech@gmail.com>
+EMAIL_USER=seu_email_aqui@gmail.com
+EMAIL_PASS=sua_senha_de_app_do_gmail_aqui
+EMAIL_FROM=Reveste Kids <seu_email_aqui@gmail.com>
+
+# Chaves do Google
+GOOGLE_CLIENT_ID=seu_google_client_id_aqui
+GOOGLE_CLIENT_SECRET=seu_google_client_secret_aqui
