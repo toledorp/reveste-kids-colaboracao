@@ -3,6 +3,7 @@ import userService from "../services/userService.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { OAuth2Client } from "google-auth-library";
+import { randomBytes } from "node:crypto";
 
 const JWTSecret = process.env.JWTSECRET;
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -117,7 +118,7 @@ const googleLogin = async (req, res) => {
 
     const payload = ticket.getPayload();
 
-    if (!payload || !payload.email || !payload.email_verified) {
+    if (!payload?.email || !payload.email_verified) {
       return res.status(401).json({
         error: "O Google não retornou um e-mail verificado.",
       });
@@ -131,9 +132,7 @@ const googleLogin = async (req, res) => {
 
     // 3. Cadastra o usuário caso ele ainda não exista
     if (!user) {
-      const randomPassword =
-        `${cryptoRandomPart()}${cryptoRandomPart()}`;
-
+      const randomPassword = randomBytes(32).toString("hex");
       const hash = bcrypt.hashSync(randomPassword, 10);
 
       await userService.Create(name, email, hash, "user");
@@ -167,9 +166,11 @@ const googleLogin = async (req, res) => {
     // O erro detalhado fica apenas no terminal do backend
     console.error("Erro na rota de login com Google:", error);
 
+    const errorMessage = error?.message ?? "";
+
     if (
-      error.message?.includes("Wrong recipient") ||
-      error.message?.includes("audience")
+      errorMessage.includes("Wrong recipient") ||
+      errorMessage.includes("audience")
     ) {
       return res.status(401).json({
         error:
@@ -182,11 +183,6 @@ const googleLogin = async (req, res) => {
     });
   }
 };
-
-// Gera partes aleatórias para a senha interna do usuário Google
-function cryptoRandomPart() {
-  return Math.random().toString(36).slice(2);
-}
 
 export default {
   createUser,

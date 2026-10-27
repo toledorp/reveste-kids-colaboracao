@@ -1,7 +1,8 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from "../services/api";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import "./AuthPanel.css";
 
 function AuthPanel({ onAuthSuccess }) {
@@ -53,54 +54,9 @@ function AuthPanel({ onAuthSuccess }) {
     }
   };
 
-  const handleGoogleSuccess = async (credential) => {
-    if (!credential) {
-      setError("Não foi possível obter a credencial do Google.");
-      return;
-    }
-
-    resetMessages();
-    setLoading(true);
-
-    try {
-      const res = await fetch("http://localhost:4000/auth/google", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: credential,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(
-          data.error || "Erro ao autenticar com o Google no servidor."
-        );
-      }
-
-      if (!data.token) {
-        throw new Error("O servidor não retornou um token de autenticação.");
-      }
-
-      handleAuthStorageAndRedirect(data.token);
-    } catch (err) {
-      setError(
-        err.message || "Não foi possível realizar o login com o Google."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const googleLogin = useGoogleLogin({
     flow: "implicit",
     onSuccess: (tokenResponse) => {
-      // O fluxo implicit retorna um access_token, não um ID token.
-      // Por isso, buscamos os dados do usuário no Google e enviamos
-      // o token de acesso ao backend apenas se ele aceitar esse formato.
       handleGoogleAccessToken(tokenResponse.access_token);
     },
     onError: () => {
@@ -148,10 +104,6 @@ function AuthPanel({ onAuthSuccess }) {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleGoogleError = () => {
-    setError("Ocorreu um erro na autenticação com o Google.");
   };
 
   return (
