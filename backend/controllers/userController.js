@@ -1,12 +1,9 @@
-
 import userService from "../services/userService.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { OAuth2Client } from "google-auth-library";
 import { randomBytes } from "node:crypto";
 
 const JWTSecret = process.env.JWTSECRET;
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Função para cadastrar um usuário
 const createUser = async (req, res) => {
@@ -93,32 +90,37 @@ const loginUser = async (req, res) => {
 // Função para autenticar ou cadastrar via Google
 const googleLogin = async (req, res) => {
   try {
-    const { token } = req.body;
+    const { accessToken } = req.body;
 
-    if (!token) {
+    if (!accessToken) {
       return res.status(400).json({
         error: "Token do Google não fornecido.",
       });
-    }
-
-    if (!process.env.GOOGLE_CLIENT_ID) {
-      throw new Error("GOOGLE_CLIENT_ID não está configurado no backend.");
     }
 
     if (!JWTSecret) {
       throw new Error("JWTSECRET não está configurado no ambiente.");
     }
 
-    // 1. Valida o token recebido do frontend.
-    // O campo "aud" do token precisa corresponder a este Client ID.
-    const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID,
-    });
+    // Valida o access token e consulta o perfil no Google.
+    const googleResponse = await fetch(
+      "https://www.googleapis.com/oauth2/v3/userinfo",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
 
-    const payload = ticket.getPayload();
+    if (!googleResponse.ok) {
+      return res.status(401).json({
+        error: "Token do Google inválido ou expirado.",
+      });
+    }
 
-    if (!payload?.email || !payload.email_verified) {
+    const payload = await googleResponse.json();
+
+    if (!payload?.email || payload.email_verified !== true) {
       return res.status(401).json({
         error: "O Google não retornou um e-mail verificado.",
       });
@@ -127,17 +129,17 @@ const googleLogin = async (req, res) => {
     const email = payload.email;
     const name = payload.name || email.split("@")[0];
 
-    // 2. Procura o usuário pelo e-mail
+    // Procura o usuário pelo e-mail.
     let user = await userService.getOne(email);
 
-    // 3. Cadastra o usuário caso ele ainda não exista
+    // Cadastra o usuário caso ele ainda não exista.
     if (!user) {
       const randomPassword = randomBytes(32).toString("hex");
       const hash = bcrypt.hashSync(randomPassword, 10);
 
       await userService.Create(name, email, hash, "user");
 
-      // Recupera o registro criado no banco
+      // Recupera o registro criado no banco.
       user = await userService.getOne(email);
     }
 
@@ -147,7 +149,7 @@ const googleLogin = async (req, res) => {
       );
     }
 
-    // 4. Gera o JWT utilizado pelo sistema
+    // Gera o JWT utilizado pelo sistema.
     const jwtToken = jwt.sign(
       {
         id: user._id,
@@ -163,20 +165,7 @@ const googleLogin = async (req, res) => {
       token: jwtToken,
     });
   } catch (error) {
-    // O erro detalhado fica apenas no terminal do backend
     console.error("Erro na rota de login com Google:", error);
-
-    const errorMessage = error?.message ?? "";
-
-    if (
-      errorMessage.includes("Wrong recipient") ||
-      errorMessage.includes("audience")
-    ) {
-      return res.status(401).json({
-        error:
-          "O Client ID do token do Google não corresponde ao configurado no backend.",
-      });
-    }
 
     return res.status(500).json({
       error: "Erro na autenticação com o Google.",

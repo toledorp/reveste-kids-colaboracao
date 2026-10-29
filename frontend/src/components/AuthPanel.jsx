@@ -56,6 +56,7 @@ function AuthPanel({ onAuthSuccess }) {
 
   const googleLogin = useGoogleLogin({
     flow: "implicit",
+    scope: "openid email profile",
     onSuccess: (tokenResponse) => {
       void handleGoogleAccessToken(tokenResponse.access_token);
     },
